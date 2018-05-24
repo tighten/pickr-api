@@ -46,6 +46,22 @@ class UpdateUserTest extends TestCase
     }
 
     /** @test */
+    public function user_info_cannot_be_updated_by_different_user()
+    {
+        $user = factory(User::class)->create();
+        $differentUser = factory(User::class)->create();
+
+        Passport::actingAs($differentUser);
+
+        $this->withExceptionHandling()->json('PATCH', '/api/users/' . $user->id, [
+            'name' => 'John Doe',
+            'email' => 'foo@bar.com',
+            'password' => 'secret',
+        ])
+            ->assertStatus(403);
+    }
+
+    /** @test */
     public function name_field_is_required_when_updating_user()
     {
         $user = factory(User::class)->create();

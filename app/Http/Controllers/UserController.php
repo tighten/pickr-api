@@ -27,6 +27,10 @@ class UserController extends Controller
             'password' => 'nullable|string|min:6',
         ]);
 
+        if ($user->id !== auth()->user()->id) {
+            return response()->json(['error' => 'Not authorized.'],403);
+        }
+
         $user->update($data);
 
         return response()->json();
