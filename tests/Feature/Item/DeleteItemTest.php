@@ -25,7 +25,7 @@ class DeleteItemTest extends TestCase
         $this->assertEquals(1, Item::all()->count());
 
         $this->json('DELETE', '/api/categories/' . $category->id . '/items/' . $item->id)
-            ->assertStatus(200);
+            ->assertStatus(204);
 
         $this->assertEquals(0, Item::all()->count());
     }

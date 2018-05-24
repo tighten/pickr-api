@@ -42,6 +42,6 @@ class ItemController extends Controller
     {
         $item->delete();
 
-        return response()->json([]);
+        return response()->json([], 204);
     }
 }

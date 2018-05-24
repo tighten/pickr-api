@@ -23,7 +23,7 @@ class DeleteCategoryTest extends TestCase
         $this->assertEquals(1, Category::all()->count());
 
         $this->json('DELETE', '/api/categories/' . $category->id)
-            ->assertStatus(200);
+            ->assertStatus(204);
 
         $this->assertEquals(0, Category::all()->count());
     }
