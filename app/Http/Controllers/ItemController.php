@@ -35,7 +35,7 @@ class ItemController extends Controller
             'description' => request()->input('description'),
         ]);
 
-        return response()->json($item->fresh());
+        return response()->json($item);
     }
 
     public function destroy(Category $category, Item $item)

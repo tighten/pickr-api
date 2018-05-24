@@ -33,7 +33,7 @@ class CategoryController extends Controller
             'name' => request()->input('name'),
         ]);
 
-        return response()->json($category->fresh());
+        return response()->json($category);
     }
 
     public function destroy(Category $category)
