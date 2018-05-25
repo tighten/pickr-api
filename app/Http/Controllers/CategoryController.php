@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
         $category = Category::create([
             'name' => request()->input('name'),
-            'user_id' => auth()->user()->id,
+            'user_id' => 1,
         ]);
 
         return response()->json($category);

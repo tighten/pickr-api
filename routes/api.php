@@ -13,15 +13,13 @@
 
 Route::post('users', 'UserController@store');
 
-Route::middleware('auth:api')->group(function () {
-    Route::patch('users/{user}', 'UserController@update');
+Route::patch('users/{user}', 'UserController@update');
 
-    Route::get('categories', 'CategoryController@index');
-    Route::post('categories', 'CategoryController@store');
-    Route::put('categories/{category}', 'CategoryController@update');
-    Route::delete('categories/{category}', 'CategoryController@destroy');
+Route::get('categories', 'CategoryController@index');
+Route::post('categories', 'CategoryController@store');
+Route::put('categories/{category}', 'CategoryController@update');
+Route::delete('categories/{category}', 'CategoryController@destroy');
 
-    Route::post('categories/{category}/items', 'ItemController@store');
-    Route::put('categories/{category}/items/{item}', 'ItemController@update');
-    Route::delete('categories/{category}/items/{item}', 'ItemController@destroy');
-});
+Route::post('categories/{category}/items', 'ItemController@store');
+Route::put('categories/{category}/items/{item}', 'ItemController@update');
+Route::delete('categories/{category}/items/{item}', 'ItemController@destroy');
