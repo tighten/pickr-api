@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return response()->json(Category::where('user_id', auth()->id())->with('items')->get());
+        return response()->json(Category::where('user_id', 1)->with('items')->get());
     }
 
     public function store()
