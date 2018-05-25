@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return response()->json(Category::where('user_id', auth()->user()->id)->with('items')->get());
+        return response()->json(Category::where('user_id', auth()->id())->with('items')->get());
     }
 
     public function store()
@@ -33,13 +33,13 @@ class CategoryController extends Controller
             'name' => request()->input('name'),
         ]);
 
-        return response()->json($category->fresh());
+        return response()->json($category);
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
 
-        return response()->json([]);
+        return response()->json([], 204);
     }
 }
